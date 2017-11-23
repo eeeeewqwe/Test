@@ -29,7 +29,7 @@ class HomeController extends Controller
     {
         $rooms = Room::all();
         $users = User::all()->except(Auth::id());
-        $messages = Message::all();
+        $messages = Message::where('room_id', null)->get();
 
         return view('home', ['messages' => $messages, 'users' => $users, 'rooms' => $rooms]);
     }
